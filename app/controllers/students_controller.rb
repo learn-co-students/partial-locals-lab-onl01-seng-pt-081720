@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to @student
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    @students = Student.search(params[:query])
   end
 
   def student_params
