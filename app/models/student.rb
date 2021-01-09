@@ -15,21 +15,21 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   #if searching iterate over every student to find a match, else display all students
-  # def self.search(query)
-  #   if query.present?
-  #     self.all.select do |s|
-  #       s.name.downcase.include?(query.downcase)
-  #     end
-  #   else
-  #     self.all
-  #   end
-  # end
-
   def self.search(query)
-    if query
-      where("name LIKE ?", "%#{query}%")
+    if query.present?
+      self.all.select do |s|
+        s.name.downcase.include?(query.downcase)
+      end
     else
       self.all
     end
   end
+
+  # def self.search(query)
+  #   if query
+  #     where("name LIKE ?", "%#{query}%")
+  #   else
+  #     self.all
+  #   end
+  # end
 end
