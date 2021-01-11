@@ -26,11 +26,15 @@ class Student < ActiveRecord::Base
   # end
 
   #query in ActiveRecord that follows the form: Student.where("name LIKE ?", "%M%")
-  def self.search(query)
-    if query
-      where("LOWER(name) LIKE ?", "%#{query}%")
-    else
-      self.all
-    end
+  # def self.search(query)
+  #   if query
+  #     where("LOWER(name) LIKE ?", "%#{query}%")
+  #   else
+  #     self.all
+  #   end
+  # end
+
+  def self.searcg(query)
+    query ? where("LOWER(name) LIKE ?", "%#{query}%") : self.all
   end
 end
