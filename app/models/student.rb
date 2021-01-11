@@ -28,7 +28,7 @@ class Student < ActiveRecord::Base
   #query in ActiveRecord that follows the form: Student.where("name LIKE ?", "%M%")
   def self.search(query)
     if query
-      where("name LIKE ?", "%#{query}%")
+      where("LOWER(name) LIKE ?", "%#{query}%")
     else
       self.all
     end
