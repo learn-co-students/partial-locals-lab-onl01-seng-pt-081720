@@ -1,0 +1,10 @@
+<%= form_tag classrooms_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<% @classroom.each do |classroom| %>
+  <%= render partial: 'classroom', locals: {classrom: classroom} %>
+<% end %>
