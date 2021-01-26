@@ -22,6 +22,13 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.search(params[:search])
+
+    # Student.all.map do |s|
+    #   if s.name.include(params[:search])
+    #     render 'student'
+    #   else
+    #     @students = Student.all
+    #   end
   end
 
   def student_params
